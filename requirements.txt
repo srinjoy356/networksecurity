@@ -8,5 +8,6 @@ pymongo
 scikit-learn
 dill
 pyaml
+pickle
 
 #-e .
