@@ -1,0 +1,39 @@
+[2026-04-28 01:03:35,275 ] 1026 httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[2026-04-28 01:03:35,288 ] 107 dagshub - INFO - Accessing as srinjoy356
+[2026-04-28 01:03:37,009 ] 1026 httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/repos/srinjoy356/networksecurity "HTTP/1.1 200 OK"
+[2026-04-28 01:03:39,308 ] 1026 httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[2026-04-28 01:03:39,312 ] 107 dagshub - INFO - Initialized MLflow to track repo "srinjoy356/networksecurity"
+[2026-04-28 01:03:39,313 ] 107 dagshub - INFO - Repository srinjoy356/networksecurity initialized!
+[2026-04-28 01:03:39,314 ] 28 root - INFO - Initiate the data ingestion
+[2026-04-28 01:03:43,847 ] 65 root - INFO - Performed train test split on the dataframe
+[2026-04-28 01:03:43,847 ] 67 root - INFO - Exited split_data_as_train_test method of Data_Ingestion class
+[2026-04-28 01:03:43,849 ] 75 root - INFO - Exporting train and test file path.
+[2026-04-28 01:03:44,024 ] 84 root - INFO - Exported train and test file path.
+[2026-04-28 01:03:44,025 ] 30 root - INFO - Data Initiation Completed
+[2026-04-28 01:03:44,039 ] 37 root - INFO - Initiate the data Validation
+[2026-04-28 01:03:44,275 ] 32 root - INFO - Required number of columns:2
+[2026-04-28 01:03:44,275 ] 33 root - INFO - Data frame has columns:31
+[2026-04-28 01:03:44,275 ] 32 root - INFO - Required number of columns:2
+[2026-04-28 01:03:44,275 ] 33 root - INFO - Data frame has columns:31
+[2026-04-28 01:03:44,276 ] 44 root - INFO - Expected numerical columns: ['having_IP_Address', 'URL_Length', 'Shortining_Service', 'having_At_Symbol', 'double_slash_redirecting', 'Prefix_Suffix', 'having_Sub_Domain', 'SSLfinal_State', 'Domain_registeration_length', 'Favicon', 'port', 'HTTPS_token', 'Request_URL', 'URL_of_Anchor', 'Links_in_tags', 'SFH', 'Submitting_to_email', 'Abnormal_URL', 'Redirect', 'on_mouseover', 'RightClick', 'popUpWidnow', 'Iframe', 'age_of_domain', 'DNSRecord', 'web_traffic', 'Page_Rank', 'Google_Index', 'Links_pointing_to_page', 'Statistical_report', 'Result']
+[2026-04-28 01:03:44,278 ] 62 root - INFO - All numerical columns are valid.
+[2026-04-28 01:03:44,279 ] 44 root - INFO - Expected numerical columns: ['having_IP_Address', 'URL_Length', 'Shortining_Service', 'having_At_Symbol', 'double_slash_redirecting', 'Prefix_Suffix', 'having_Sub_Domain', 'SSLfinal_State', 'Domain_registeration_length', 'Favicon', 'port', 'HTTPS_token', 'Request_URL', 'URL_of_Anchor', 'Links_in_tags', 'SFH', 'Submitting_to_email', 'Abnormal_URL', 'Redirect', 'on_mouseover', 'RightClick', 'popUpWidnow', 'Iframe', 'age_of_domain', 'DNSRecord', 'web_traffic', 'Page_Rank', 'Google_Index', 'Links_pointing_to_page', 'Statistical_report', 'Result']
+[2026-04-28 01:03:44,280 ] 62 root - INFO - All numerical columns are valid.
+[2026-04-28 01:03:44,641 ] 39 root - INFO - data Validation Completed
+[2026-04-28 01:03:44,642 ] 45 root - INFO - data Transformation started
+[2026-04-28 01:03:44,642 ] 63 root - INFO - Entered initiate_data_transformation method of DataTransformation class
+[2026-04-28 01:03:44,642 ] 65 root - INFO - Starting data transformation
+[2026-04-28 01:03:44,797 ] 48 root - INFO - Entered get_data_trnasformer_object method of Trnasformation class
+[2026-04-28 01:03:44,798 ] 53 root - INFO - Initialise KNNImputer with {'missing_values': nan, 'n_neighbors': 3, 'weights': 'uniform'}
+[2026-04-28 01:03:44,839 ] 50 root - INFO - Entered the save_object method of MainUtils class
+[2026-04-28 01:03:44,847 ] 54 root - INFO - Exited the save_object method of MainUtils class
+[2026-04-28 01:03:44,847 ] 50 root - INFO - Entered the save_object method of MainUtils class
+[2026-04-28 01:03:44,856 ] 54 root - INFO - Exited the save_object method of MainUtils class
+[2026-04-28 01:03:44,859 ] 49 root - INFO - data Transformation completed
+[2026-04-28 01:03:44,859 ] 53 root - INFO - Model Training sstared
+[2026-04-28 01:14:01,541 ] 50 root - INFO - Entered the save_object method of MainUtils class
+[2026-04-28 01:14:01,544 ] 54 root - INFO - Exited the save_object method of MainUtils class
+[2026-04-28 01:14:01,544 ] 50 root - INFO - Entered the save_object method of MainUtils class
+[2026-04-28 01:14:01,606 ] 54 root - INFO - Exited the save_object method of MainUtils class
+[2026-04-28 01:14:01,606 ] 167 root - INFO - Model trainer artifact: ModelTrainerArtifact(trained_model_file_path='Artifacts\\04_28_2026_01_03_18\\model_trainer\\trained_model\\model.pkl', train_metric_artifact=ClassificationMetricArtifact(f1_score=0.9919821374200751, precision_score=0.9904742602351033, recall_score=0.9934946127261639), test_metric_artifact=ClassificationMetricArtifact(f1_score=0.9712230215827338, precision_score=0.9612341772151899, recall_score=0.981421647819063))
+[2026-04-28 01:14:01,611 ] 57 root - INFO - Model Training artifact created

@@ -21,8 +21,6 @@ SCHEMA_FILE_PATH = os.path.join("data_schema", "schema.yaml")
 SAVED_MODEL_DIR =os.path.join("saved_models")
 MODEL_FILE_NAME = "model.pkl"
 
-SCHEMA_FILE_PATH = os.path.join("data_schema", "schema.yaml")
-
 
 
 """
@@ -61,4 +59,29 @@ DATA_TRANSFORMATION_IMPUTER_PARAMS: dict = {
 DATA_TRANSFORMATION_TRAIN_FILE_PATH: str = "train.npy"
 
 DATA_TRANSFORMATION_TEST_FILE_PATH: str = "test.npy"
+
+
+
+"""
+Model Trainer ralated constant start with MODE TRAINER VAR NAME
+"""
+
+MODEL_TRAINER_DIR_NAME: str = "model_trainer"
+MODEL_TRAINER_TRAINED_MODEL_DIR: str = "trained_model"
+MODEL_TRAINER_TRAINED_MODEL_NAME: str = "model.pkl"
+MODEL_TRAINER_EXPECTED_SCORE: float = 0.6
+MODEL_TRAINER_OVER_FIITING_UNDER_FITTING_THRESHOLD: float = 0.05
+
+TRAINING_BUCKET_NAME = "netwworksecurity"
+
+
+"""
+Feature Extraction related constants start with FEATURE_EXTRACTION VAR NAME
+"""
+FEATURE_EXTRACTION_REQUEST_TIMEOUT: int = 10
+FEATURE_EXTRACTION_USER_AGENT: str = (
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+    "AppleWebKit/537.36 (KHTML, like Gecko) "
+    "Chrome/120.0.0.0 Safari/537.36"
+)
 
