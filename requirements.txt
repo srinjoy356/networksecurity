@@ -12,6 +12,7 @@ mlflow
 dagshub
 fastapi
 uvicorn
+pydantic[email]
 
 # ── NEW: JWT authentication ────────────────────────────────────────────────────
 python-jose[cryptography]   # JWT encode / decode
