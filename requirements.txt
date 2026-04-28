@@ -16,10 +16,11 @@ pydantic[email]
 
 # ── NEW: JWT authentication ────────────────────────────────────────────────────
 python-jose[cryptography]   # JWT encode / decode
-passlib[bcrypt]             # password hashing
+bcrypt
+passlib[bcrypt]           # password hashing
 python-multipart            # OAuth2PasswordRequestForm body parsing
  
 # ── NEW: Supabase / PostgreSQL ────────────────────────────────────────────────
 psycopg2-binary             # PostgreSQL driver
 
-#-e .
+-e .
