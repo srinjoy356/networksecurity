@@ -32,7 +32,7 @@ def _get_connection():
     url = os.getenv("DATABASE_URL")
     if not url:
         raise RuntimeError("DATABASE_URL environment variable is not set.")
-    return psycopg2.connect(url, cursor_factory=psycopg2.extras.RealDictCursor)
+    return psycopg2.connect(dsn=url, cursor_factory=psycopg2.extras.RealDictCursor)
 
 
 # ═══════════════════════════════════════════════════════════════════════════════

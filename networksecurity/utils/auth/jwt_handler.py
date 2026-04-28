@@ -20,9 +20,9 @@ from networksecurity.logging.logger import logging
 
 # ── config (read from environment) ───────────────────────────────────────────
 
-SECRET_KEY: str = os.getenv("JWT_SECRET_KEY", "CHANGE_ME_IN_PRODUCTION_USE_RANDOM_256_BIT")
+SECRET_KEY: str = os.getenv("JWT_SECRET_KEY")
 ALGORITHM: str = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES: int = int(os.getenv("JWT_EXPIRE_MINUTES", "60"))
+ACCESS_TOKEN_EXPIRE_MINUTES: int = int(os.getenv("JWT_EXPIRE_MINUTES"))
 
 _pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
