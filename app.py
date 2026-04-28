@@ -136,6 +136,34 @@ class PredictionResponse(BaseModel):
 async def index():
     return RedirectResponse(url="/docs")
 
+# ═══════════════════════════════════════════════════════════════════════════════
+# ROUTE — HEALTH CHECK  (keeps Render + Supabase alive)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+from datetime import datetime
+
+@app.get("/health", tags=["Utility"], summary="Health check — pings DB and keeps services warm")
+async def health_check():
+    """
+    Lightweight ping that:
+    1. Touches Supabase (reads 1 row from prediction_logs)
+    2. Returns app status + timestamp
+    Use an external cron (cron-job.org) to call this every 10–12 mins.
+    """
+    try:
+        from networksecurity.cloud.supabase_db import supabase
+        # Minimal read — just fetches 1 row to keep the connection warm
+        supabase.table("prediction_logs").select("id").limit(1).execute()
+        db_status = "ok"
+    except Exception as e:
+        db_status = f"error: {str(e)}"
+
+    return {
+        "status": "ok",
+        "timestamp": datetime.utcnow().isoformat(),
+        "supabase": db_status,
+    }
+
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # ROUTE — TRAINING  [ADMIN ONLY]
