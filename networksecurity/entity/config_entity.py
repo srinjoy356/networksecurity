@@ -76,10 +76,33 @@ class ModelTrainerConfig:
 
 
 class FeatureExtractionConfig:
+    """
+    Configuration for the FeatureExtractor component.
+ 
+    All values are sourced from training_pipeline constants so they
+    stay in one place and no external / paid APIs are required.
+ 
+    Optional free local data files (no API key needed):
+      • Tranco top-1M CSV   → https://tranco-list.eu/
+      • PhishTank CSV       → https://www.phishtank.com/developer_info.php
+    Point FEATURE_EXTRACTION_TRANCO_CSV_PATH /
+    FEATURE_EXTRACTION_PHISHTANK_CSV_PATH in training_pipeline/__init__.py
+    to their paths once downloaded.
+    """
+ 
     def __init__(self):
+        # HTTP timeout (seconds) when fetching a live page
         self.request_timeout: int = training_pipeline.FEATURE_EXTRACTION_REQUEST_TIMEOUT
+ 
+        # User-agent header sent during page fetch
         self.user_agent: str = training_pipeline.FEATURE_EXTRACTION_USER_AGENT
-        self.pagerank_api_key: str = os.getenv("PAGERANK_API_KEY", "")
-        self.alexa_api_url: str = os.getenv("ALEXA_API_URL", "")
-        self.phishtank_api_key: str = os.getenv("PHISHTANK_API_KEY", "")
-        self.backlink_api_url: str = os.getenv("BACKLINK_API_URL", "")
+ 
+        # True  → fetch live page (full 30-feature extraction, needs network)
+        # False → URL-only mode  (18 features, no HTTP I/O, much faster)
+        self.fetch_page: bool = training_pipeline.FEATURE_EXTRACTION_FETCH_PAGE
+ 
+        # Optional local Tranco CSV path for web_traffic feature
+        self.tranco_csv_path: str = training_pipeline.FEATURE_EXTRACTION_TRANCO_CSV_PATH
+ 
+        # Optional local PhishTank CSV path for statistical_report feature
+        self.phishtank_csv_path: str = training_pipeline.FEATURE_EXTRACTION_PHISHTANK_CSV_PATH

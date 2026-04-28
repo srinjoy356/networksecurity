@@ -76,12 +76,33 @@ TRAINING_BUCKET_NAME = "netwworksecurity"
 
 
 """
-Feature Extraction related constants start with FEATURE_EXTRACTION VAR NAME
+Feature Extraction related constants — NO external APIs required.
+All features are derived from:
+  • URL string parsing        (stdlib)
+  • DNS resolution            (dnspython / socket fallback)
+  • WHOIS lookup              (python-whois)
+  • Live HTTP page fetch      (requests + beautifulsoup4)
+  • Optional local CSV files  (Tranco, PhishTank — free downloads)
 """
-FEATURE_EXTRACTION_REQUEST_TIMEOUT: int = 10
+# HTTP request timeout in seconds for page fetching
+FEATURE_EXTRACTION_REQUEST_TIMEOUT: int = 8
+ 
+# User-agent header sent when fetching pages
 FEATURE_EXTRACTION_USER_AGENT: str = (
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-    "AppleWebKit/537.36 (KHTML, like Gecko) "
-    "Chrome/120.0.0.0 Safari/537.36"
+    "Mozilla/5.0 (compatible; PhishDetector/1.0)"
 )
+ 
+# Set True to fetch the live page (full 30-feature extraction).
+# Set False for fast URL-only mode (18 / 30 features active, no network I/O).
+FEATURE_EXTRACTION_FETCH_PAGE: bool = True
+ 
+# Optional path to a local Tranco top-1M CSV file (rank,domain).
+# Download free from https://tranco-list.eu/ — no API key needed.
+# Leave empty string "" to skip (web_traffic feature will default to 0).
+FEATURE_EXTRACTION_TRANCO_CSV_PATH: str = ""
+ 
+# Optional path to a local PhishTank verified_online.csv.
+# Download free from https://www.phishtank.com/developer_info.php — no key.
+# Leave empty string "" to skip (statistical_report will default to 1).
+FEATURE_EXTRACTION_PHISHTANK_CSV_PATH: str = ""
 

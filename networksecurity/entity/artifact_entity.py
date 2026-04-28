@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from typing import Dict, List
 
 @dataclass
 class DataIngestionArtifact:
@@ -34,8 +35,32 @@ class ModelTrainerArtifact:
 
 @dataclass
 class FeatureExtractionArtifact:
+    """
+    Produced by FeatureExtractor.extract() for a single URL.
+ 
+    Fields
+    ------
+    url : str
+        The original URL that was analysed.
+    prediction : int
+        Raw model output: 1 = Legitimate, -1 = Phishing.
+    label : str
+        Human-readable label: "Legitimate" or "Phishing".
+    features : Dict[str, int]
+        All 30 extracted features, values in {-1, 0, 1},
+        keyed by the exact column names from phisingData.csv.
+    phishing_signal_count : int
+        Number of features that returned -1 (phishing signal).
+    suspicious_signal_count : int
+        Number of features that returned 0 (suspicious signal).
+    feature_vector : List[int]
+        Features as an ordered list matching phisingData.csv column order.
+        Ready to pass directly into preprocessor.transform().
+    """
     url: str
     prediction: int
     label: str
-    features: dict
+    features: Dict[str, int]
     phishing_signal_count: int
+    suspicious_signal_count: int
+    feature_vector: List[int]
