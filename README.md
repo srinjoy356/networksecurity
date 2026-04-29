@@ -1,5 +1,7 @@
 ![Alt text](image.png)
 
+Live website link: https://networksecurity-lake.vercel.app/
+
 # Network Security — Phishing Detection System
 
 An end-to-end machine learning pipeline for detecting phishing URLs in real time, featuring automated data ingestion, validation, transformation, model training, and cloud deployment on AWS.
