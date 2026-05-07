@@ -150,8 +150,8 @@ async def health_check():
     2. Returns app status + timestamp
     Use an external cron (cron-job.org) to call this every 10–12 mins.
     """
-    rows
-    db_status
+    rows = []
+    db_status = "unknown"
     try:
         from networksecurity.cloud.supabase_db import supabase
         # Minimal read — just fetches 1 row to keep the connection warm
