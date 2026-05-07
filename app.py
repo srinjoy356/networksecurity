@@ -154,6 +154,7 @@ async def health_check():
         from networksecurity.cloud.supabase_db import supabase
         # Minimal read — just fetches 1 row to keep the connection warm
         supabase.table("prediction_logs").select("id").limit(1).execute()
+        rows = get_predictions_for_user(user_id=2, limit=1)
         db_status = "ok"
     except Exception as e:
         db_status = f"error: {str(e)}"
@@ -162,6 +163,7 @@ async def health_check():
         "status": "ok",
         "timestamp": datetime.utcnow().isoformat(),
         "supabase": db_status,
+        "rows": rows,
     }
 
 
