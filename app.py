@@ -160,10 +160,9 @@ async def health_check():
         db_status = f"error: {str(e)}"
 
     return {
-        "status": "ok",
+        "status": db_status,
         "timestamp": datetime.utcnow().isoformat(),
-        "supabase": db_status,
-        "rows": rows,
+        "supabase": rows,
     }
 
 
